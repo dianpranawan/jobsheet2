@@ -89,3 +89,64 @@ const nestedProducts = [
 ];
 
 console.log(nestedProducts);
+
+const allTags = nestedProducts.map(product => product.tags);
+
+console.log(allTags);
+
+function findProductsByTag(products, tag) {
+    return products.filter(product => product.tags.includes(tag));
+}
+
+console.log(findProductsByTag(nestedProducts, "electronics"));
+
+const reviewCounts = nestedProducts.map(product => ({
+    id: product.id,
+    title: product.title,
+    totalReviews: product.reviews.length
+}));
+
+console.log(reviewCounts);
+
+const fiveStarReviews = nestedProducts.flatMap(product =>
+    product.reviews.filter(review => review.rating === 5)
+);
+
+console.log(fiveStarReviews);
+``
+const averageRatings = nestedProducts.map(product => {
+    const totalRating = product.reviews.reduce(
+        (sum, review) => sum + review.rating,
+        0
+    );
+
+    return {
+        id: product.id,
+        title: product.title,
+        averageRating: totalRating / product.reviews.length
+    };
+});
+
+console.log(averageRatings);
+
+const productWithMostReviews = nestedProducts.reduce((max, product) =>
+    product.reviews.length > max.reviews.length ? product : max
+);
+
+console.log(productWithMostReviews);
+
+const allReviewRatings = nestedProducts.flatMap(product =>
+    product.reviews.map(review => review.rating)
+);
+
+console.log(allReviewRatings);
+
+const allTagsFlat = nestedProducts.flatMap(product => product.tags);
+
+console.log(allTagsFlat);
+
+const allComments = nestedProducts.flatMap(product =>
+    product.reviews.map(review => review.comment)
+);
+
+console.log(allComments);
