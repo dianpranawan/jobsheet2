@@ -289,3 +289,53 @@ function binarySearchByPrice(sortedProducts, targetPrice) {
 
 console.log(sortedProducts);
 console.log(binarySearchByPrice(sortedProducts, 1200));
+
+
+// Latihan 8.1
+function bubbleSort(numbers) {
+    const arr = [...numbers];
+
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
+        }
+    }
+
+    return arr;
+}
+
+const numbersToSort = [5, 3, 8, 1];
+
+console.log(bubbleSort(numbersToSort));
+console.log(numbersToSort);
+
+
+// Latihan 8.2
+function sortProducts(products, sortBy) {
+    const result = [...products];
+
+    if (sortBy === "price-asc") {
+        return result.sort((a, b) => a.price - b.price);
+    }
+
+    if (sortBy === "price-desc") {
+        return result.sort((a, b) => b.price - a.price);
+    }
+
+    if (sortBy === "rating") {
+        return result.sort((a, b) => b.rating - a.rating);
+    }
+
+    if (sortBy === "title") {
+        return result.sort((a, b) => a.title.localeCompare(b.title));
+    }
+
+    return result;
+}
+
+console.log(sortProducts(nestedProducts, "price-asc"));
+console.log(sortProducts(nestedProducts, "price-desc"));
+console.log(sortProducts(nestedProducts, "rating"));
+console.log(sortProducts(nestedProducts, "title"));
