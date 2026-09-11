@@ -150,3 +150,39 @@ const allComments = nestedProducts.flatMap(product =>
 );
 
 console.log(allComments);
+
+// Latihan 5.1
+const laptopPrices = products
+    .filter(p => p.category === "laptops")
+    .map(p => p.price);
+
+const avg = laptopPrices.reduce((a, b) => a + b, 0) / laptopPrices.length;
+
+console.log(avg);
+
+// Latihan 5.2
+function getStatistics(products) {
+    const totalProducts = products.length;
+
+    const totalPrice = products.reduce((sum, product) => sum + product.price, 0);
+    const averagePrice = totalPrice / totalProducts;
+
+    const highestPrice = Math.max(...products.map(product => product.price));
+    const lowestPrice = Math.min(...products.map(product => product.price));
+
+    const totalStock = products.reduce((sum, product) => sum + product.stock, 0);
+
+    const averageRating =
+        products.reduce((sum, product) => sum + product.rating, 0) / totalProducts;
+
+    return {
+        totalProducts,
+        averagePrice,
+        highestPrice,
+        lowestPrice,
+        totalStock,
+        averageRating
+    };
+}
+
+console.log(getStatistics(nestedProducts));
