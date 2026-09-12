@@ -368,3 +368,26 @@ const categorySummary = Object.entries(groupedProducts).map(
 );
 
 console.log(categorySummary);
+
+// Latihan 10.1
+function countFrequency(array) {
+    return array.reduce((count, item) => {
+        count[item] = (count[item] || 0) + 1;
+        return count;
+    }, {});
+}
+
+// Latihan 10.2
+const categoryFrequency = countFrequency(
+    nestedProducts.map(product => product.category)
+);
+
+const tagFrequency = countFrequency(allTagsFlat);
+
+const ratingFrequency = countFrequency(
+    nestedProducts.map(product => Math.round(product.rating))
+);
+
+console.log(categoryFrequency);
+console.log(tagFrequency);
+console.log(ratingFrequency);
