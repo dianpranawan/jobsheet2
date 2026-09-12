@@ -401,3 +401,20 @@ const uniqueTags = [...new Set(allTagsFlat)];
 
 console.log(uniqueCategories);
 console.log(uniqueTags);
+
+// Latihan 12.1
+function buildProductLookup(products) {
+    const productMap = new Map();
+
+    for (const product of products) {
+        productMap.set(product.id, product);
+    }
+
+    return productMap;
+}
+
+const productMap = buildProductLookup(nestedProducts);
+
+console.log(productMap);
+console.log(productMap.get(1));
+console.log(productMap.get(2));
