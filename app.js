@@ -391,3 +391,13 @@ const ratingFrequency = countFrequency(
 console.log(categoryFrequency);
 console.log(tagFrequency);
 console.log(ratingFrequency);
+
+// Latihan 11.1
+const uniqueCategories = [...new Set(
+    nestedProducts.map(product => product.category)
+)];
+
+const uniqueTags = [...new Set(allTagsFlat)];
+
+console.log(uniqueCategories);
+console.log(uniqueTags);
