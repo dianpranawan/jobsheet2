@@ -481,3 +481,26 @@ queue.enqueue("Request 3");
 console.log(queue.peek());
 console.log(queue.dequeue());
 console.log(queue.peek());
+
+// Latihan 15.1
+const categories = [
+    {
+        name: "Electronics",
+        children: [
+            { name: "Laptop", children: [] },
+            { name: "Phone", children: [] }
+        ]
+    }
+];
+
+function printCategories(categories, depth = 0) {
+    for (const category of categories) {
+        console.log(" ".repeat(depth) + category.name);
+
+        if (category.children.length > 0) {
+            printCategories(category.children, depth + 1);
+        }
+    }
+}
+
+printCategories(categories);
