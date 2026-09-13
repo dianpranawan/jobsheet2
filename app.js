@@ -548,3 +548,27 @@ function binarySearchSteps(arr, target) {
 
 console.log("Linear Search:", linearSearchSteps(bigArray, 10000));
 console.log("Binary Search:", binarySearchSteps(bigArray, 10000));
+
+// Latihan 17.1
+function renderProducts(products) {
+    const container = document.querySelector("#product-list");
+
+    container.innerHTML = "";
+
+    for (const product of products) {
+        const card = document.createElement("div");
+
+        card.classList.add("product-card");
+
+        card.innerHTML = `
+            <h3>${product.title}</h3>
+            <p>${product.category}</p>
+            <p>Harga: $${product.price}</p>
+            <p>Rating: ${product.rating}</p>
+        `;
+
+        container.append(card);
+    }
+}
+
+renderProducts(nestedProducts);
