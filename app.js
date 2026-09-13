@@ -504,3 +504,47 @@ function printCategories(categories, depth = 0) {
 }
 
 printCategories(categories);
+
+// Latihan 16.1
+const bigArray = Array.from({ length: 10000 }, (_, i) => i + 1);
+
+function linearSearchSteps(arr, target) {
+    let steps = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        steps++;
+
+        if (arr[i] === target) {
+            return steps;
+        }
+    }
+
+    return steps;
+}
+
+function binarySearchSteps(arr, target) {
+    let left = 0;
+    let right = arr.length - 1;
+    let steps = 0;
+
+    while (left <= right) {
+        steps++;
+
+        const mid = Math.floor((left + right) / 2);
+
+        if (arr[mid] === target) {
+            return steps;
+        }
+
+        if (arr[mid] < target) {
+            left = mid + 1;
+        } else {
+            right = mid - 1;
+        }
+    }
+
+    return steps;
+}
+
+console.log("Linear Search:", linearSearchSteps(bigArray, 10000));
+console.log("Binary Search:", binarySearchSteps(bigArray, 10000));
