@@ -632,3 +632,43 @@ sortSelect.addEventListener("change", (e) => {
     state.sortBy = e.target.value;
     render();
 });
+
+// Latihan 20.1
+function getStatisticsModern(products) {
+    const totalProducts = products.length;
+
+    const totalPrice = products.reduce(
+        (sum, { price }) => sum + price,
+        0
+    );
+
+    const averagePrice = totalPrice / totalProducts;
+
+    const prices = products.map(({ price }) => price);
+
+    const highestPrice = Math.max(...prices);
+    const lowestPrice = Math.min(...prices);
+
+    const totalStock = products.reduce(
+        (sum, { stock }) => sum + stock,
+        0
+    );
+
+    const averageRating =
+        products.reduce(
+            (sum, product) => sum + (product?.rating ?? 0),
+            0
+        ) / totalProducts;
+
+    return {
+        totalProducts,
+        averagePrice,
+        highestPrice,
+        lowestPrice,
+        totalStock,
+        averageRating
+    };
+}
+
+console.log(getStatisticsModern(nestedProducts));
+
