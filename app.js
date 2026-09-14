@@ -572,3 +572,41 @@ function renderProducts(products) {
 }
 
 renderProducts(nestedProducts);
+
+// Latihan 18.1
+const state = {
+    products: nestedProducts,
+    search: "",
+    category: "all",
+    sortBy: "default",
+    favorites: [],
+    status: "success"
+};
+
+function render() {
+    let result = state.products;
+
+    if (state.search) {
+        result = result.filter(product =>
+            product.title.toLowerCase().includes(state.search.toLowerCase())
+        );
+    }
+
+    if (state.category !== "all") {
+        result = result.filter(product =>
+            product.category === state.category
+        );
+    }
+
+    if (state.sortBy === "price-asc") {
+        result = [...result].sort((a, b) => a.price - b.price);
+    }
+
+    if (state.sortBy === "price-desc") {
+        result = [...result].sort((a, b) => b.price - a.price);
+    }
+
+    renderProducts(result);
+}
+
+render();
