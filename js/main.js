@@ -59,6 +59,3 @@ sortSelect.addEventListener("change", (e) => {
 render();
 
 console.log(linearSearch(products.map(product => product.id), 2));
-console.log(groupByCategory(products));
-
-import "./promise.js";
